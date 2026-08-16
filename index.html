@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doña Sol — Productos de Limpieza | Montevideo, Uruguay</title>
+  <meta name="description" content="Fábrica uruguaya de productos de limpieza industrial, comercial y familiar. Más de 25 productos de excelente calidad. Pedidos por WhatsApp. Lauro Müller 2008, Montevideo.">
+  <meta property="og:title" content="Doña Sol — Productos de Limpieza">
+  <meta property="og:description" content="Productos para limpieza industrial, comercial y familiar de excelente calidad. Siempre rinde mucho más.">
+  <meta property="og:image" content="img/logo.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="%23FFB300"/><g stroke="%23FFB300" stroke-width="6" stroke-linecap="round"><line x1="50" y1="4" x2="50" y2="16"/><line x1="50" y1="84" x2="50" y2="96"/><line x1="4" y1="50" x2="16" y2="50"/><line x1="84" y1="50" x2="96" y2="50"/><line x1="18" y1="18" x2="26" y2="26"/><line x1="74" y1="74" x2="82" y2="82"/><line x1="18" y1="82" x2="26" y2="74"/><line x1="74" y1="26" x2="82" y2="18"/></g></svg>'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header__inner">
+    <a href="#inicio" class="logo" aria-label="Doña Sol, ir al inicio">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="26" fill="#FFB300"/>
+        <circle cx="42" cy="42" r="10" fill="#FFD54D" opacity=".8"/>
+        <g stroke="#E2251B" stroke-width="7" stroke-linecap="round">
+          <line x1="50" y1="6"  x2="50" y2="18"/>
+          <line x1="50" y1="82" x2="50" y2="94"/>
+          <line x1="6"  y1="50" x2="18" y2="50"/>
+          <line x1="82" y1="50" x2="94" y2="50"/>
+          <line x1="19" y1="19" x2="27" y2="27"/>
+          <line x1="73" y1="73" x2="81" y2="81"/>
+          <line x1="19" y1="81" x2="27" y2="73"/>
+          <line x1="73" y1="27" x2="81" y2="19"/>
+        </g>
+      </svg>
+      DOÑA&nbsp;<b>SOL</b>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito de pedido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-btn__label">Mi pedido</span>
+        <span class="cart-btn__count" id="cartCount" aria-live="polite">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="hero__tag">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        Fábrica uruguaya · Siempre rinde mucho más
+      </span>
+      <h1>Limpieza profesional con la calidad de <span class="sun-word">Doña Sol</span></h1>
+      <p class="lead">
+        Fabricamos productos para limpieza industrial, comercial y familiar de excelente
+        calidad y última generación. Más de 25 productos para tu hogar o tu empresa.
+      </p>
+      <div class="hero__ctas">
+        <a href="#productos" class="btn btn--light">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          Ver productos
+        </a>
+        <a href="https://wa.me/59892747716?text=%C2%A1Hola%20Do%C3%B1a%20Sol!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn btn--wsp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.9 7c-.01 5.45-4.44 9.87-9.9 9.87zm8.42-18.29A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.88-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4z"/></svg>
+          Pedir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__sun"></div>
+      <img class="hero__product" src="img/mulcit.png" alt="" width="340" height="440" loading="eager">
+      <span class="hero__chip hero__chip--1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Calidad garantizada
+      </span>
+      <span class="hero__chip hero__chip--2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Venta mayorista y minorista
+      </span>
+    </div>
+  </div>
+
+  <div class="hero__stats">
+    <div class="hero__stat"><strong>+25 productos</strong><span>de fabricación propia</span></div>
+    <div class="hero__stat"><strong>Industrial · Comercial · Familiar</strong><span>una solución para cada necesidad</span></div>
+    <div class="hero__stat"><strong>Montevideo, Uruguay</strong><span>Lauro Müller 2008</span></div>
+  </div>
+</section>
+
+<!-- ================= CATEGORÍAS ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Categorías</span>
+      <h2>Todo lo que necesitás para limpiar</h2>
+      <p>Explorá nuestras líneas de productos y armá tu pedido en minutos.</p>
+    </div>
+    <div class="cat-grid reveal">
+      <a class="cat-card" href="#productos" data-cat="limpieza">
+        <span class="cat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 5H8z"/><path d="M7 8h10l1.5 12a1 1 0 0 1-1 1.1h-11A1 1 0 0 1 5.5 20z"/><line x1="12" y1="3" x2="12" y2="1"/></svg>
+        </span>
+        <h3>Limpieza y Desinfección</h3>
+        <span>Multiusos, lavandina, alcoholes y más</span>
+      </a>
+      <a class="cat-card" href="#productos" data-cat="ropa">
+        <span class="cat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+        </span>
+        <h3>Ropa y Lavado</h3>
+        <span>Jabones líquidos y suavizantes</span>
+      </a>
+      <a class="cat-card" href="#productos" data-cat="papel">
+        <span class="cat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        </span>
+        <h3>Papel e Higiene</h3>
+        <span>Higiénicos, toallas y servilletas</span>
+      </a>
+      <a class="cat-card" href="#productos" data-cat="auto">
+        <span class="cat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="7" rx="2"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></svg>
+        </span>
+        <h3>Automotor</h3>
+        <span>Emulsiones para neumáticos y plásticos</span>
+      </a>
+      <a class="cat-card" href="#productos" data-cat="accesorios">
+        <span class="cat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M8 2h8l-1 8a3 3 0 0 1-6 0z"/><path d="M9.5 14h5l1 8h-7z"/></svg>
+        </span>
+        <h3>Accesorios</h3>
+        <span>Paños, franelas, rejillas y guantes</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIENDA ================= -->
+<section class="section section--soft" id="productos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Tienda online</span>
+      <h2>Nuestros productos</h2>
+      <p>Agregá lo que necesites al pedido y envialo por WhatsApp. Te confirmamos precios y entrega al instante.</p>
+    </div>
+
+    <div class="shop-bar reveal">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="searchInput" placeholder="Buscar producto..." aria-label="Buscar producto">
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría"></div>
+    </div>
+
+    <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section class="section" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <div class="section-head">
+        <span class="kicker">Nosotros</span>
+        <h2>Una fábrica uruguaya que rinde mucho más</h2>
+      </div>
+      <p>
+        En <strong>Doña Sol</strong> fabricamos productos para la limpieza industrial, comercial
+        y familiar de excelente calidad y última generación. Desde nuestra planta en
+        Montevideo llegamos a hogares, comercios e industrias de todo el país.
+      </p>
+      <p>
+        Trabajamos todos los días para que cada producto rinda más, cuide tus espacios
+        y te haga la limpieza más fácil.
+      </p>
+      <div class="about-points">
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div>
+            <strong>Fabricación propia</strong>
+            <span>Controlamos la calidad de cada lote, de principio a fin.</span>
+          </div>
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div>
+            <strong>Atención personalizada</strong>
+            <span>Te asesoramos para elegir el producto justo para cada tarea.</span>
+          </div>
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div>
+            <strong>Mayorista y minorista</strong>
+            <span>Precios especiales para comercios, empresas e instituciones.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <img src="img/flyer.jpg" alt="Línea de productos Doña Sol: paños, jabones, alcohol en gel, hipoclorito, shampoo industrial y más" loading="lazy" width="800" height="600">
+      <div class="about-visual__card">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+        <div>
+          <strong>Siempre rinde mucho más</strong>
+          <span>Nuestra promesa desde el primer día</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAYORISTA ================= -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="wholesale reveal">
+      <div>
+        <h2>¿Tenés un comercio o una empresa?</h2>
+        <p>Accedé a precios mayoristas en toda nuestra línea de limpieza y papelería institucional. Pedinos una cotización sin compromiso.</p>
+      </div>
+      <a href="https://wa.me/59892747716?text=%C2%A1Hola%20Do%C3%B1a%20Sol!%20Quiero%20una%20cotizaci%C3%B3n%20mayorista." target="_blank" rel="noopener" class="btn btn--light">
+        Solicitar cotización mayorista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="section section--soft" id="contacto">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Contacto</span>
+      <h2>Estamos para ayudarte</h2>
+      <p>Escribinos, llamanos o visitanos. Respondemos de lunes a viernes de 8:00 a 17:00 hs.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <span class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <strong>Dirección</strong>
+            <span>Lauro Müller 2008, Montevideo, Uruguay</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <div>
+            <strong>Teléfonos</strong>
+            <a href="tel:+59824183045">2418 3045</a>
+            <a href="tel:+59824183003">2418 3003</a>
+            <a href="tel:+59892747716">092 747 716</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:donasol@adinet.com.uy">donasol@adinet.com.uy</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <div>
+            <strong>Instagram</strong>
+            <a href="https://www.instagram.com/donasolproductos" target="_blank" rel="noopener">@donasolproductos</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <div>
+            <strong>Horario</strong>
+            <span>Lunes a viernes de 8:00 a 17:00 hs</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Lauro+M%C3%BCller+2008,+Montevideo,+Uruguay&output=embed"
+          title="Ubicación de Doña Sol en el mapa"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="#inicio" class="logo" aria-label="Doña Sol, ir al inicio">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="26" fill="#FFB300"/>
+            <circle cx="42" cy="42" r="10" fill="#FFD54D" opacity=".8"/>
+            <g stroke="#FFB300" stroke-width="7" stroke-linecap="round">
+              <line x1="50" y1="6" x2="50" y2="18"/><line x1="50" y1="82" x2="50" y2="94"/>
+              <line x1="6" y1="50" x2="18" y2="50"/><line x1="82" y1="50" x2="94" y2="50"/>
+              <line x1="19" y1="19" x2="27" y2="27"/><line x1="73" y1="73" x2="81" y2="81"/>
+              <line x1="19" y1="81" x2="27" y2="73"/><line x1="73" y1="27" x2="81" y2="19"/>
+            </g>
+          </svg>
+          DOÑA&nbsp;<b>SOL</b>
+        </a>
+        <p>Productos para limpieza industrial, comercial y familiar de excelente calidad y última generación. Siempre rinde mucho más.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+59824183045">2418 3045 · 2418 3003</a></li>
+          <li><a href="https://wa.me/59892747716" target="_blank" rel="noopener">WhatsApp 092 747 716</a></li>
+          <li><a href="mailto:donasol@adinet.com.uy">donasol@adinet.com.uy</a></li>
+          <li><a href="https://www.instagram.com/donasolproductos" target="_blank" rel="noopener">@donasolproductos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Doña Sol · Montevideo, Uruguay</span>
+      <span>Lauro Müller 2008 · Lun a Vie 8:00–17:00</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CARRITO ================= -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de pedido">
+  <div class="cart-drawer__head">
+    <h3>Tu pedido</h3>
+    <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer__foot">
+    <p class="cart-note">Al enviar el pedido te confirmamos precios, stock y forma de entrega por WhatsApp.</p>
+    <button class="btn btn--wsp" id="checkoutBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.9 7c-.01 5.45-4.44 9.87-9.9 9.87zm8.42-18.29A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.88-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4z"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+    <button class="cart-clear" id="clearCart">Vaciar pedido</button>
+  </div>
+</aside>
+
+<!-- WhatsApp flotante -->
+<a class="wsp-float" href="https://wa.me/59892747716?text=%C2%A1Hola%20Do%C3%B1a%20Sol!" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.9 7c-.01 5.45-4.44 9.87-9.9 9.87zm8.42-18.29A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.88-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4z"/></svg>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Producto agregado</span>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

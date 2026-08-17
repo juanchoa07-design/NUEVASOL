@@ -455,6 +455,7 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
@@ -923,6 +924,72 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
   padding: .4rem;
 }
 .cart-clear:hover { color: var(--brand-700); }
+
+/* ============ Detalle de producto ============ */
+.pmodal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 220;
+  width: min(540px, calc(100% - 2rem));
+  max-height: min(680px, calc(100dvh - 2rem));
+  overflow-y: auto;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(.96);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.pmodal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.pmodal-close {
+  position: absolute;
+  top: .9rem;
+  right: .9rem;
+  z-index: 2;
+  width: 40px; height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.pmodal-close:hover { background: #fff; }
+.pmodal-close svg { width: 18px; height: 18px; }
+.pmodal-img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  padding: 1.6rem;
+}
+.pmodal-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.pmodal-body { padding: 1.6rem 1.7rem 1.8rem; }
+.pmodal-body h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: .35rem 0 .8rem;
+}
+.pmodal-desc {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1.3rem;
+}
+.pmodal-body .product-card__meta {
+  padding-top: 0;
+  margin-bottom: 0;
+}
 
 /* ============ Flotante WhatsApp ============ */
 .wsp-float {

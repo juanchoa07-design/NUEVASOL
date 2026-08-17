@@ -59,6 +59,15 @@ function escapeHtml(s) {
   }[c]));
 }
 
+function sizePickerHTML(p, activeSize) {
+  return `
+    <div class="size-picker" role="group" aria-label="Elegir tamaño de ${escapeHtml(p.nombre)}">
+      ${p.tamanos.map(t => `
+        <button class="size-chip${t === activeSize ? " active" : ""}" data-size="${escapeHtml(t)}"
+                aria-pressed="${t === activeSize}">${escapeHtml(t)}</button>`).join("")}
+    </div>`;
+}
+
 /* Botón "Agregar al pedido" o contador +/- según lo que ya haya en el carrito */
 function footerControlHTML(p, size) {
   const key = size ? `${p.id}|${size}` : p.id;
@@ -89,6 +98,19 @@ function syncCardFooter(card) {
 
 function syncGridFooters() {
   grid.querySelectorAll(".product-card").forEach(syncCardFooter);
+}
+
+function syncModalFooter() {
+  if (!currentModalProduct) return;
+  const slot = productModal.querySelector("[data-qty-slot]");
+  if (!slot) return;
+  const size = productModal.querySelector(".size-chip.active")?.dataset.size || null;
+  slot.innerHTML = footerControlHTML(currentModalProduct, size);
+}
+
+function syncAllFooters() {
+  syncGridFooters();
+  syncModalFooter();
 }
 
 /* ---------- Filtros ---------- */
@@ -151,7 +173,7 @@ function renderProducts() {
   grid.innerHTML = list.map(p => {
     const firstSize = p.tamanos ? p.tamanos[0] : null;
     return `
-    <article class="product-card">
+    <article class="product-card" data-id="${p.id}">
       <div class="product-card__img">
         ${p.destacado ? `<span class="product-card__badge">Destacado</span>` : ""}
         <img src="${p.img}" alt="${escapeHtml(p.nombre)} Doña Sol" loading="lazy" width="400" height="300">
@@ -161,12 +183,7 @@ function renderProducts() {
         <h3>${escapeHtml(p.nombre)}</h3>
         <p class="product-card__desc">${escapeHtml(p.descripcion)}</p>
         <div class="product-card__meta">
-          ${p.tamanos ? `
-          <div class="size-picker" role="group" aria-label="Elegir tamaño de ${escapeHtml(p.nombre)}">
-            ${p.tamanos.map((t, i) => `
-              <button class="size-chip${i === 0 ? " active" : ""}" data-size="${escapeHtml(t)}"
-                      aria-pressed="${i === 0}">${escapeHtml(t)}</button>`).join("")}
-          </div>` : `
+          ${p.tamanos ? sizePickerHTML(p, firstSize) : `
           <span class="product-card__pres">${escapeHtml(p.presentacion)}</span>`}
           <span class="product-card__price">${formatPrice(p)}</span>
         </div>
@@ -213,8 +230,17 @@ grid.addEventListener("click", (e) => {
   }
 
   const btn = e.target.closest("[data-add]");
-  if (!btn) return;
-  addToCart(btn.dataset.add, activeSizeOf(btn));
+  if (btn) {
+    addToCart(btn.dataset.add, activeSizeOf(btn));
+    return;
+  }
+
+  // Ningún control fue el objetivo: abrir el detalle del producto
+  const card = e.target.closest(".product-card");
+  if (card) {
+    const activeSize = card.querySelector(".size-chip.active")?.dataset.size || null;
+    openProductModal(card.dataset.id, activeSize);
+  }
 });
 
 /* ---------- Carrito ---------- */
@@ -247,7 +273,7 @@ function setQty(key, qty) {
 
 function updateCartUI() {
   cartCount.textContent = cartTotalItems();
-  syncGridFooters();
+  syncAllFooters();
 
   const keys = Object.keys(cart);
   if (!keys.length) {
@@ -298,15 +324,84 @@ function openCart() {
 }
 function closeCart() {
   cartDrawer.classList.remove("open");
-  overlay.classList.remove("open");
-  document.body.style.overflow = "";
+  if (!productModal.classList.contains("open")) overlay.classList.remove("open");
+  document.body.style.overflow = productModal.classList.contains("open") ? "hidden" : "";
 }
 
 $("#cartOpen").addEventListener("click", openCart);
 $("#cartClose").addEventListener("click", closeCart);
-overlay.addEventListener("click", closeCart);
+overlay.addEventListener("click", () => { closeCart(); closeProductModal(); });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeCart();
+  if (e.key === "Escape") { closeCart(); closeProductModal(); }
+});
+
+/* ---------- Detalle de producto ---------- */
+const productModal = $("#productModal");
+let currentModalProduct = null;
+
+function openProductModal(id, initialSize = null) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentModalProduct = p;
+  const size = initialSize || (p.tamanos ? p.tamanos[0] : null);
+
+  const badge = $("#pmodalBadge");
+  badge.hidden = !p.destacado;
+  const img = $("#pmodalImg");
+  img.src = p.img;
+  img.alt = `${p.nombre} Doña Sol`;
+  $("#pmodalCat").textContent = catNames[p.categoria] || "";
+  $("#pmodalName").textContent = p.nombre;
+  $("#pmodalDesc").textContent = p.descripcion;
+  $("#pmodalMeta").innerHTML = `
+    ${p.tamanos ? sizePickerHTML(p, size) : `<span class="product-card__pres">${escapeHtml(p.presentacion)}</span>`}
+    <span class="product-card__price">${formatPrice(p)}</span>`;
+  $("#pmodalQtySlot").dataset.qtySlot = p.id;
+  $("#pmodalQtySlot").innerHTML = footerControlHTML(p, size);
+
+  productModal.classList.add("open");
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProductModal() {
+  productModal.classList.remove("open");
+  if (!cartDrawer.classList.contains("open")) overlay.classList.remove("open");
+  document.body.style.overflow = cartDrawer.classList.contains("open") ? "hidden" : "";
+  currentModalProduct = null;
+}
+
+$("#pmodalClose").addEventListener("click", closeProductModal);
+
+productModal.addEventListener("click", (e) => {
+  const chip = e.target.closest(".size-chip");
+  if (chip) {
+    productModal.querySelectorAll(".size-chip").forEach(c => {
+      c.classList.toggle("active", c === chip);
+      c.setAttribute("aria-pressed", c === chip);
+    });
+    syncModalFooter();
+    return;
+  }
+
+  const activeSize = () => productModal.querySelector(".size-chip.active")?.dataset.size || null;
+
+  const inc = e.target.closest("[data-qty-inc]");
+  if (inc) {
+    const key = activeSize() ? `${inc.dataset.qtyInc}|${activeSize()}` : inc.dataset.qtyInc;
+    setQty(key, (cart[key] || 0) + 1);
+    return;
+  }
+
+  const dec = e.target.closest("[data-qty-dec]");
+  if (dec) {
+    const key = activeSize() ? `${dec.dataset.qtyDec}|${activeSize()}` : dec.dataset.qtyDec;
+    setQty(key, (cart[key] || 0) - 1);
+    return;
+  }
+
+  const addBtn = e.target.closest("[data-add]");
+  if (addBtn) addToCart(addBtn.dataset.add, activeSize());
 });
 
 $("#clearCart").addEventListener("click", () => {

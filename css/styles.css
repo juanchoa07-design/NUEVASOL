@@ -618,6 +618,9 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
 .about-visual img {
   width: 100%;
   height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: left 35%;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }

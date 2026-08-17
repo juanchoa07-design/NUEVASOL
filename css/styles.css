@@ -653,30 +653,64 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
 .about-point span { font-size: .9rem; color: var(--muted); }
 
 .about-visual { position: relative; }
-.about-visual img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  object-position: left 35%;
+.about-stat-panel {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(2.6rem, 5vw, 3.6rem) 2rem;
   border-radius: var(--radius-lg);
+  background:
+    radial-gradient(600px 320px at 85% -10%, rgba(255, 179, 0, .35), transparent 60%),
+    linear-gradient(135deg, var(--brand-800), var(--brand-600));
+  color: #fff;
   box-shadow: var(--shadow-lg);
 }
-.about-visual__card {
-  position: absolute;
-  bottom: -1.4rem;
-  left: -1.4rem;
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-  background: #fff;
-  padding: 1rem 1.3rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
+.about-stat-panel__sun { width: 60px; height: 60px; margin: 0 auto 1.3rem; }
+.about-stat-panel__number {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1;
 }
-.about-visual__card svg { width: 34px; height: 34px; color: var(--sun); flex: none; }
-.about-visual__card strong { display: block; font-family: var(--font-head); color: var(--ink); font-size: 1rem; }
-.about-visual__card span { font-size: .82rem; color: var(--muted); }
+.about-stat-panel__label {
+  display: block;
+  margin-top: .5rem;
+  font-size: 1rem;
+  opacity: .92;
+}
+.about-stat-panel__divider {
+  width: 56px;
+  height: 2px;
+  margin: 1.8rem auto;
+  background: rgba(255, 255, 255, .35);
+}
+.about-stat-panel__row {
+  display: flex;
+  justify-content: center;
+  gap: 2.6rem;
+}
+.about-stat-panel__row strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.about-stat-panel__row span {
+  display: block;
+  margin-top: .2rem;
+  font-size: .8rem;
+  opacity: .85;
+}
+.about-stat-panel__tag {
+  margin-top: 1.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: .95rem;
+  opacity: .95;
+}
 
 /* ============ Franja mayorista ============ */
 .wholesale {
@@ -1086,7 +1120,7 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
   .hero__chip--1 { top: 2%; }
   .hero__chip--2 { bottom: 6%; }
   .hero__stats { grid-template-columns: 1fr; }
-  .about-visual__card { left: .8rem; bottom: -1rem; }
+  .about-stat-panel__row { gap: 1.6rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 1rem; }
   .product-card__body { padding: .9rem .9rem 1rem; }

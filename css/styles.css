@@ -582,6 +582,43 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
 .add-btn:active { transform: scale(.97); }
 .add-btn svg { width: 18px; height: 18px; }
 
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 46px;
+  margin-top: .7rem;
+  border-radius: 12px;
+  background: var(--ink);
+  overflow: hidden;
+}
+.qty-stepper__btn {
+  flex: none;
+  width: 46px;
+  min-height: 46px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  transition: background .15s ease;
+}
+.qty-stepper__btn:hover { background: var(--brand); }
+.qty-stepper__btn:active { transform: scale(.94); }
+.qty-stepper__count {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: .95rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .no-results {
   grid-column: 1 / -1;
   text-align: center;

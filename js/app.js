@@ -59,6 +59,38 @@ function escapeHtml(s) {
   }[c]));
 }
 
+/* Botón "Agregar al pedido" o contador +/- según lo que ya haya en el carrito */
+function footerControlHTML(p, size) {
+  const key = size ? `${p.id}|${size}` : p.id;
+  const qty = cart[key] || 0;
+  if (qty > 0) {
+    return `
+      <div class="qty-stepper" role="group" aria-label="Cantidad de ${escapeHtml(p.nombre)} en el pedido">
+        <button class="qty-stepper__btn" data-qty-dec="${p.id}" aria-label="Restar uno de ${escapeHtml(p.nombre)}">−</button>
+        <span class="qty-stepper__count" aria-live="polite">${qty}</span>
+        <button class="qty-stepper__btn" data-qty-inc="${p.id}" aria-label="Sumar uno de ${escapeHtml(p.nombre)}">+</button>
+      </div>`;
+  }
+  return `
+    <button class="add-btn" data-add="${p.id}" aria-label="Agregar ${escapeHtml(p.nombre)} al pedido">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Agregar al pedido
+    </button>`;
+}
+
+function syncCardFooter(card) {
+  const slot = card.querySelector("[data-qty-slot]");
+  if (!slot) return;
+  const p = PRODUCTS.find(x => x.id === slot.dataset.qtySlot);
+  if (!p) return;
+  const size = card.querySelector(".size-chip.active")?.dataset.size || null;
+  slot.innerHTML = footerControlHTML(p, size);
+}
+
+function syncGridFooters() {
+  grid.querySelectorAll(".product-card").forEach(syncCardFooter);
+}
+
 /* ---------- Filtros ---------- */
 function renderFilters() {
   filtersBox.innerHTML = CATEGORIAS.map(c => `
@@ -116,7 +148,9 @@ function renderProducts() {
     return;
   }
 
-  grid.innerHTML = list.map(p => `
+  grid.innerHTML = list.map(p => {
+    const firstSize = p.tamanos ? p.tamanos[0] : null;
+    return `
     <article class="product-card">
       <div class="product-card__img">
         ${p.destacado ? `<span class="product-card__badge">Destacado</span>` : ""}
@@ -136,28 +170,51 @@ function renderProducts() {
           <span class="product-card__pres">${escapeHtml(p.presentacion)}</span>`}
           <span class="product-card__price">${formatPrice(p)}</span>
         </div>
-        <button class="add-btn" data-add="${p.id}" aria-label="Agregar ${escapeHtml(p.nombre)} al pedido">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Agregar al pedido
-        </button>
+        <div class="qty-slot" data-qty-slot="${p.id}">${footerControlHTML(p, firstSize)}</div>
       </div>
     </article>
-  `).join("");
+  `;
+  }).join("");
 }
 
 grid.addEventListener("click", (e) => {
   const chip = e.target.closest(".size-chip");
   if (chip) {
-    chip.closest(".size-picker").querySelectorAll(".size-chip").forEach(c => {
+    const card = chip.closest(".product-card");
+    card.querySelectorAll(".size-chip").forEach(c => {
       c.classList.toggle("active", c === chip);
       c.setAttribute("aria-pressed", c === chip);
     });
+    syncCardFooter(card);
     return;
   }
+
+  const activeSizeOf = (btn) => {
+    const active = btn.closest(".product-card").querySelector(".size-chip.active");
+    return active ? active.dataset.size : null;
+  };
+
+  const inc = e.target.closest("[data-qty-inc]");
+  if (inc) {
+    const id = inc.dataset.qtyInc;
+    const size = activeSizeOf(inc);
+    const key = size ? `${id}|${size}` : id;
+    setQty(key, (cart[key] || 0) + 1);
+    return;
+  }
+
+  const dec = e.target.closest("[data-qty-dec]");
+  if (dec) {
+    const id = dec.dataset.qtyDec;
+    const size = activeSizeOf(dec);
+    const key = size ? `${id}|${size}` : id;
+    setQty(key, (cart[key] || 0) - 1);
+    return;
+  }
+
   const btn = e.target.closest("[data-add]");
   if (!btn) return;
-  const active = btn.closest(".product-card").querySelector(".size-chip.active");
-  addToCart(btn.dataset.add, active ? active.dataset.size : null);
+  addToCart(btn.dataset.add, activeSizeOf(btn));
 });
 
 /* ---------- Carrito ---------- */
@@ -190,6 +247,7 @@ function setQty(key, qty) {
 
 function updateCartUI() {
   cartCount.textContent = cartTotalItems();
+  syncGridFooters();
 
   const keys = Object.keys(cart);
   if (!keys.length) {

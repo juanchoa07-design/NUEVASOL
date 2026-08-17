@@ -711,15 +711,9 @@ section[id], [id="productos"], [id="nosotros"], [id="contacto"] { scroll-margin-
   gap: 2.5rem;
   padding-bottom: 2.5rem;
 }
-.footer .logo { color: #fff; margin-bottom: 1rem; }
+.footer .logo { color: #fff; margin-bottom: 1rem; font-size: 1.5rem; }
 .footer .logo b { color: var(--sun); }
-.footer__logo { display: inline-block; margin-bottom: 1.1rem; }
-.footer__logo img {
-  width: 180px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .4);
-}
+.footer .logo svg { width: 46px; height: 46px; }
 .footer h4 { color: #fff; font-size: .95rem; margin-bottom: 1rem; }
 .footer ul { list-style: none; display: grid; gap: .55rem; }
 .footer a { color: #B8AFA8; }
